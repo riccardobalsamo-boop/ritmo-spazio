@@ -1,51 +1,54 @@
-// Musical Rhythm Training Application
+// Musical Rhythm Training Application Logic
 
-// Initialization
-const Tone = require('tone');
-const Vex = require('vexflow');
-
-const audioContext = new Tone.Context();
-const staffNotation = new Vex.Flow.Staff();
+const { Renderer } = Vex;
+const { Transport, Part, Tone } = Tone;
 
 // Rhythm Generation
 const generateRhythm = () => {
-    // Example rhythm
-    return [ 'quarter', 'eighth', 'eighth', 'quarter' ];
+    // Logic to generate random rhythms
 };
 
-// VexFlow Staff Notation
-const renderStaff = (rhythm) => {
-    // Setting up the staff based on rhythm
-    staffNotation.addNote(rhythm);
+// VexFlow Notation
+const drawNotation = (rhythm) => {
+    const renderer = new Renderer(document.getElementById('notation'), Renderer.Backends.SVG);
+    renderer.resize(500, 500);
+    const ctx = renderer.getContext();
+    const stave = new Stave(10, 40, 400);
+    stave.addClef('treble').addTimeSignature('4/4');
+    stave.setContext(ctx).draw();
+    // Draw notes based on rhythm
 };
 
-// Tone.js Audio Playback
-const playSound = (rhythm) => {
-    const synth = new Tone.Synth().toDestination();
-    rhythm.forEach(note => {
-        synth.triggerAttackRelease(note, '8n');
-    });
+// Tone.js Audio
+const playRhythm = (rhythm) => {
+    // Logic to play generated rhythm using Tone.js
 };
 
 // Spacebar Input Recording
-let userInputs = [];
+let isRecording = false;
+const recording = [];
+
 window.addEventListener('keydown', (event) => {
     if (event.code === 'Space') {
-        userInputs.push(Date.now());
+        if (!isRecording) {
+            isRecording = true;
+            recording.push(Date.now()); // Start recording time
+        } else {
+            recording.push(Date.now()); // Record time on each spacebar press
+        }
     }
 });
 
-// Execution Evaluation
-const evaluateInput = () => {
-    // Compare userInputs with generated rhythm
-    // Evaluation logic here
+// Performance Evaluation
+const evaluatePerformance = () => {
+    // Logic to evaluate user's performance based on recorded input
 };
 
-// User Interface Event Listeners
-document.getElementById('startBtn').addEventListener('click', () => {
+// Main Function to Execute the Application
+const main = () => {
     const rhythm = generateRhythm();
-    renderStaff(rhythm);
-    playSound(rhythm);
-});
+    drawNotation(rhythm);
+    playRhythm(rhythm);
+};
 
-document.getElementById('evaluateBtn').addEventListener('click', evaluateInput);
+main();
