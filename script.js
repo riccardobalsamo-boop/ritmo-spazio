@@ -1,54 +1,84 @@
-// Musical Rhythm Training Application Logic
+// Musical Rhythm Training Application Code
 
-const { Renderer } = Vex;
-const { Transport, Part, Tone } = Tone;
+// Import required libraries
+import { Renderer } from 'vexflow';
+import { Tone } from 'tone';
+
+// Initialization
+const audioContext = new Tone.AudioContext();
+Tone.start();
 
 // Rhythm Generation
-const generateRhythm = () => {
-    // Logic to generate random rhythms
-};
+class RhythmGenerator {
+    constructor() {
+        this.patterns = [];
+    }
+
+    generatePattern() {
+        // Code to generate rhythm patterns
+        this.patterns.push(["1/4", "1/8", "1/16"]); // Example pattern
+    }
+}
 
 // VexFlow Notation
-const drawNotation = (rhythm) => {
-    const renderer = new Renderer(document.getElementById('notation'), Renderer.Backends.SVG);
-    renderer.resize(500, 500);
-    const ctx = renderer.getContext();
-    const stave = new Stave(10, 40, 400);
-    stave.addClef('treble').addTimeSignature('4/4');
-    stave.setContext(ctx).draw();
-    // Draw notes based on rhythm
-};
-
-// Tone.js Audio
-const playRhythm = (rhythm) => {
-    // Logic to play generated rhythm using Tone.js
-};
-
-// Spacebar Input Recording
-let isRecording = false;
-const recording = [];
-
-window.addEventListener('keydown', (event) => {
-    if (event.code === 'Space') {
-        if (!isRecording) {
-            isRecording = true;
-            recording.push(Date.now()); // Start recording time
-        } else {
-            recording.push(Date.now()); // Record time on each spacebar press
-        }
+class NotationRenderer {
+    constructor(container) {
+        this.renderer = new Renderer(container, Renderer.Backends.SVG);
+        this.context = this.renderer.getContext();
     }
-});
+
+    drawNotes(notes) {
+        // Code to draw notes using VexFlow
+    }
+}
+
+// Tone.js Audio Playback
+class AudioPlayback {
+    playSound(frequency) {
+        const synth = new Tone.Synth().toDestination();
+        synth.triggerAttackRelease(frequency, "8n");
+    }
+}
+
+// Spacebar Recording
+class Recorder {
+    constructor() {
+        this.recordedRhythms = [];
+        this.isRecording = false;
+        this.startRecording();
+    }
+
+    startRecording() {
+        document.addEventListener('keydown', (event) => {
+            if (event.code === 'Space') {
+                this.isRecording = true;
+                this.recordRhythm();
+            }
+        });
+    }
+
+    recordRhythm() {
+        // Logic to record rhythms when spacebar is pressed
+    }
+}
 
 // Performance Evaluation
-const evaluatePerformance = () => {
-    // Logic to evaluate user's performance based on recorded input
-};
+class PerformanceEvaluator {
+    evaluatePerformance(recordedRhythms) {
+        // Code to evaluate user's performance
+    }
+}
 
-// Main Function to Execute the Application
-const main = () => {
-    const rhythm = generateRhythm();
-    drawNotation(rhythm);
-    playRhythm(rhythm);
-};
+// UI Setup with Italian Language
+document.getElementById('start-button').innerText = 'Inizia';
 
-main();
+const rhythmGen = new RhythmGenerator();
+const notationRenderer = new NotationRenderer(document.getElementById('notation-container'));
+const audio = new AudioPlayback();
+const recorder = new Recorder();
+const evaluator = new PerformanceEvaluator();
+
+// Example of generating rhythm, rendering notation, and playing sound
+rhythmGen.generatePattern();
+notationRenderer.drawNotes(rhythmGen.patterns[0]);
+audio.playSound(440); // A4
