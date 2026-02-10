@@ -1,107 +1,17 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ritmo & Spazio - Allenamento Ritmico</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Tone.js per audio e metronomo -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
-    <!-- VexFlow per notazione musicale -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vexflow/4.1.0/vexflow.min.js"></script>
+    <title>Ritmo Spazio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vexflow/4.0.0/vexflow.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vexflow/4.0.0/vexflow-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.23/Tone.min.js"></script>
 </head>
 <body>
-    <div class="contenitore-principale">
-        <!-- HEADER -->
-        <header class="header">
-            <h1>🎵 Ritmo & Spazio</h1>
-            <p class="sottotitolo">Allenamento Ritmico Musicale</p>
-        </header>
-
-        <!-- PANNELLO DOCENTE (Configurazione) -->
-        <section class="pannello-docente">
-            <h2>⚙️ Configurazione (Docente)</h2>
-            
-            <div class="gruppo-controlli">
-                <!-- Selezione Metro -->
-                <div class="controllo">
-                    <label for="metro">Metro:</label>
-                    <select id="metro">
-                        <option value="2/4">2/4</option>
-                        <option value="3/4">3/4</option>
-                        <option value="4/4" selected>4/4</option>
-                    </select>
-                </div>
-
-                <!-- Selezione BPM -->
-                <div class="controllo">
-                    <label for="bpm">Tempo (BPM):</label>
-                    <input type="range" id="bpm" min="40" max="180" value="90" step="5">
-                    <span id="bpm-valore">90</span>
-                </div>
-
-                <!-- Pulsante Genera Nuovo Ritmo -->
-                <button id="btn-genera-ritmo" class="btn btn-primario">
-                    📝 Genera Nuovo Ritmo
-                </button>
-            </div>
-        </section>
-
-        <!-- PANNELLO ALUNNO (Visualizzazione + Esecuzione) -->
-        <section class="pannello-alunno">
-            <!-- Visualizzazione pentagramma con ritmo -->
-            <div class="sezione-pentagramma">
-                <h2>Il Tuo Ritmo</h2>
-                <div id="vexflow-container" class="vexflow-container"></div>
-            </div>
-
-            <!-- Controlli esecuzione -->
-            <div class="sezione-esecuzione">
-                <h2>Esecuzione</h2>
-                
-                <div class="controlli-esecuzione">
-                    <!-- Pulsante Ascolta -->
-                    <button id="btn-ascolta" class="btn btn-grande">
-                        🔊 Ascolta il Ritmo
-                    </button>
-
-                    <!-- Pulsante Inizia (con count-in) -->
-                    <button id="btn-inizia" class="btn btn-grande btn-success">
-                        ▶️ Inizia l'Esecuzione
-                    </button>
-
-                    <!-- Pulsante Interrompi -->
-                    <button id="btn-stop" class="btn btn-grande btn-stop" disabled>
-                        ⏹️ Interrompi
-                    </button>
-                </div>
-
-                <!-- Istruzioni per l'alunno -->
-                <div class="istruzioni">
-                    <p><strong>Come eseguire:</strong></p>
-                    <p>1. Clicca "Ascolta il Ritmo" per sentire come deve suonare</p>
-                    <p>2. Clicca "Inizia l'Esecuzione" per iniziare (sentirai un count-in)</p>
-                    <p>3. Premi <strong>BARRA SPAZIATRICE</strong> a tempo con il ritmo</p>
-                    <p>4. Riceverai subito un feedback!</p>
-                </div>
-            </div>
-
-            <!-- Area Feedback -->
-            <div class="sezione-feedback">
-                <h2>Feedback</h2>
-                <div id="feedback-area" class="feedback-area">
-                    <p class="placeholder">Nessuna esecuzione ancora</p>
-                </div>
-            </div>
-
-            <!-- Debug Info (visibile solo in dev) -->
-            <div class="debug-info">
-                <p>Metro: <span id="debug-metro">4/4</span> | BPM: <span id="debug-bpm">90</span></p>
-                <p>Colpi registrati: <span id="debug-colpi">0</span></p>
-            </div>
-        </section>
-    </div>
-
-    <script src="script.js"></script>
+    <h1>Welcome to Ritmo Spazio</h1>
+    <script>
+        // Your JavaScript code can go here
+    </script>
 </body>
 </html>
